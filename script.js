@@ -34,3 +34,14 @@ if (slides.length > 1) {
     slides[currentSlide].classList.add("active");
   }, 3500); // Transitions to the next portrait every 3.5 seconds
 }
+
+// Mobile tap-to-reveal toggle for gallery overlay captions
+const galleryItems = document.querySelectorAll(".gallery-item");
+galleryItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    galleryItems.forEach((other) => {
+      if (other !== item) other.classList.remove("active");
+    });
+    item.classList.toggle("active");
+  });
+});
