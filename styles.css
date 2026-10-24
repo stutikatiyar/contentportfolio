@@ -425,8 +425,11 @@ nav a:hover,.text-link:hover{color:var(--rust)}
   .hero-image{height:390px}
   .orbit{width:390px;height:390px}
   .orbit-two{width:530px;height:530px}
-  .projects-grid, .essays-grid, .gallery-grid {
+  .projects-grid, .essays-grid {
     grid-template-columns: 1fr;
+  }
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media(max-width:650px){
@@ -458,6 +461,9 @@ nav a:hover,.text-link:hover{color:var(--rust)}
   .create-item{grid-template-columns:28px 1fr;gap:12px}
   .status{grid-column:2;text-align:left}
   .create-item h3{font-size:21px}
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
   .contact-actions{flex-direction:column;align-items:center}
   .contact-actions .button{justify-content:center;width:min(100%,280px)}
   .site-footer{flex-wrap:wrap}
