@@ -1,26 +1,37 @@
-# Kirti's personal website starter
+Stuti Katiyar — Personal Portfolio & Visual Archive
 
-A responsive, editorial-style personal website combining:
-- personal story and visual diary
-- beauty / creative makeup experiments
-- moodboards and everyday finds
-- writing and shayari
-- engineering projects
-- future UGC and brand collaborations
+A dark editorial personal website and visual archive live at stutikatiyar.github.io/contentportfolio.
 
-## Preview locally
-1. Extract this folder.
-2. Open `index.html` in a browser. For best results, use VS Code with the Live Server extension.
-3. Replace the hero placeholder with a real portrait and update contact/social links.
+Designed with a warm, minimalist aesthetic combining:
 
-## Personalize before publishing
-- In `index.html`, replace the hero `.image-placeholder` block with an image:
-  `<img src="assets/your-portrait.jpg" alt="Kirti portrait">`
-  Then add `object-fit: cover; width:100%; height:100%` to the image styling.
-- Replace `hello@example.com` with a creator email you are comfortable publishing.
-- Replace the Pinterest URL with your profile URL.
-- Update the copy so it sounds exactly like you.
-- Add your own photos in the world cards when ready.
+Visual Archive: Portraiture, creative makeup experiments, and dark feminine visual diaries.
 
-## Publish
-This is a static HTML/CSS/JS starter and can be deployed on GitHub Pages, Netlify, or Vercel. No backend or build step is required.
+Essays & Reflections: Hindi/Urdu shayari, opinion columns, and spiritual philosophy with category tab filters.
+
+Engineering Projects: Feature cards showcasing AI, Computer Vision, and Speech AI builds (DermaLens & Multilingual Subtitler).
+
+Creator Hub: Contact channels for UGC opportunities, brand collaborations, and creative enquiries.
+
+📂 Project Structure
+
+├── index.html        # Main portfolio markup & semantic sectioning
+├── styles.css        # Custom editorial CSS, responsive grids & typography
+├── script.js         # Mobile nav, crossfade hero slideshow & category tab filters
+└── assets/           # High-resolution portrait archive (portrait-1.jpg through portrait-9.jpg)
+
+
+⚡ Local Preview
+
+Download the repository as a ZIP file from GitHub and extract it to your machine.
+
+Open index.html directly in any web browser.
+
+For hot-reloading while making edits, open the extracted folder in VS Code and run with the Live Server extension.
+
+📬 Contact & Links
+
+Pinterest: in.pinterest.com/stutik0907
+
+Email: embroidedstories25@gmail.com
+
+GitHub: github.com/stutikatiyar
