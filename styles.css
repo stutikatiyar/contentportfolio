@@ -262,55 +262,96 @@ nav a:hover,.text-link:hover{color:var(--rust)}
   border-radius: 2px;
 }
 
-/* Shayari & Poetry Section */
-.words-section {
+/* Essays, Shayari & Opinion Section */
+.essays-section {
   padding-top: 90px;
 }
-.words-header {
-  max-width: 600px;
-  margin-bottom: 45px;
+.essay-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 35px;
+  flex-wrap: wrap;
 }
-.words-header h2 {
-  font: 500 clamp(38px,5vw,62px)/1.1 var(--serif);
-  letter-spacing: -.045em;
-  margin: 12px 0 0;
-}
-.words-intro {
+.essay-tab {
+  background: transparent;
+  border: 1px solid var(--line);
   color: var(--muted);
-  font-size: 13px;
-  margin-top: 12px;
+  padding: 8px 16px;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border-radius: 2px;
 }
-.shayari-grid {
+.essay-tab:hover, .essay-tab.active {
+  background: var(--rust);
+  color: var(--ink);
+  border-color: var(--rust);
+}
+
+.essays-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
+  gap: 22px;
 }
-.shayari-card {
+.essay-card {
   background: #1d1815;
   border: 1px solid var(--line);
-  padding: 35px 30px;
+  padding: 32px 28px;
   border-radius: 2px;
-  position: relative;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
-.highlight-card {
-  border-color: rgba(184, 82, 59, 0.4);
-  background: #231c18;
+.essay-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--rust);
 }
-.shayari-meta {
+.essay-meta {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 8px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   color: var(--rust);
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
-.shayari-text {
-  font: italic 21px/1.7 var(--serif);
+.essay-poetry {
+  font: italic 19px/1.7 var(--serif);
   color: #f7ede4;
-  margin: 0;
-  letter-spacing: -0.01em;
+  margin: 0 0 20px;
+}
+.essay-card h4 {
+  font: 500 22px var(--serif);
+  margin: 0 0 12px;
+  color: var(--ink);
+}
+.essay-excerpt {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0 0 20px;
+}
+.essay-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  border-top: 1px dashed var(--line);
+  padding-top: 15px;
+}
+.essay-link {
+  color: var(--rust);
+  transition: color 0.2s;
+}
+.essay-link:hover {
+  color: var(--ink);
 }
 
 /* Visual Gallery Grid */
@@ -355,7 +396,8 @@ nav a:hover,.text-link:hover{color:var(--rust)}
 .gallery-item:hover img {
   transform: scale(1.04);
 }
-.gallery-item:hover .gallery-overlay {
+.gallery-item:hover .gallery-overlay,
+.gallery-item.active .gallery-overlay {
   opacity: 1;
 }
 
@@ -383,7 +425,7 @@ nav a:hover,.text-link:hover{color:var(--rust)}
   .hero-image{height:390px}
   .orbit{width:390px;height:390px}
   .orbit-two{width:530px;height:530px}
-  .projects-grid, .shayari-grid, .gallery-grid {
+  .projects-grid, .essays-grid, .gallery-grid {
     grid-template-columns: 1fr;
   }
 }
