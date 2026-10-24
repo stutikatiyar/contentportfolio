@@ -18,6 +18,7 @@
     <nav aria-label="Main navigation">
       <a href="#world">my world</a>
       <a href="#creates">things I make</a>
+      <a href="#reflections">words & faith</a>
       <a href="#about">about me</a>
       <a class="nav-contact" href="#contact">say hello ↗</a>
     </nav>
@@ -74,7 +75,7 @@
           <div class="card-number">02</div><div class="card-art art-mood"><span>things<br>that feel<br><em>like me.</em></span><small>MOODBOARD / FOREVER WIP</small></div>
           <div class="card-meta"><div><h3>The moodboard</h3><p>Colours, images & tiny obsessions.</p></div><span class="arrow">↗</span></div>
         </a>
-        <a class="world-card card-words" href="#words">
+        <a class="world-card card-words" href="#reflections">
           <div class="card-number">03</div><div class="card-art art-words"><span>“some feelings<br>need a place<br>to land.”</span><small>NOTES TO SELF</small></div>
           <div class="card-meta"><div><h3>Things I never said</h3><p>Shayari, thoughts & little stories.</p></div><span class="arrow">↗</span></div>
         </a>
@@ -148,22 +149,32 @@
       </div>
     </section>
 
-    <!-- SECTION: Things I Never Said (Hindi / Urdu Shayari) -->
-    <section class="section words-section" id="words">
-      <div class="words-header">
-        <p class="eyebrow">THINGS I NEVER SAID ✳ SHAYARI & NOTES</p>
-        <h2>Some thoughts stay a little <em>longer.</em></h2>
-        <p class="words-intro">Lines written for the feelings that need a quiet place to land.</p>
+    <!-- SECTION: Words, Opinions & Reflections -->
+    <section class="section essays-section" id="reflections">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">ESSAYS, SHAYARI & PERSPECTIVES ✳ OPINIONS</p>
+          <h2>Notes on life, <em>faith & poetry.</em></h2>
+        </div>
+        <p class="section-aside">Independent opinion pieces, spiritual reflections, and Hindi/Urdu shayari.</p>
       </div>
 
-      <div class="shayari-grid">
+      <!-- Category Filter Tabs -->
+      <div class="essay-tabs">
+        <button class="essay-tab active" data-category="all">All Words</button>
+        <button class="essay-tab" data-category="shayari">Shayari</button>
+        <button class="essay-tab" data-category="opinions">Opinion Columns</button>
+        <button class="essay-tab" data-category="faith">Faith & Philosophy</button>
+      </div>
+
+      <div class="essays-grid">
         <!-- Shayari Card 1 -->
-        <div class="shayari-card">
-          <div class="shayari-meta">
-            <span>001 / SHAYARI</span>
-            <span>-स्तुति</span>
+        <article class="essay-card" data-category="shayari">
+          <div class="essay-meta">
+            <span class="essay-tag">SHAYARI / DEVANAGARI</span>
+            <span class="essay-date">001</span>
           </div>
-          <p class="shayari-text">
+          <p class="essay-poetry">
             हुस्न की चौखट पर<br>
             भीड़ तो लगी रहती है,<br>
             मगर हर चाहत<br>
@@ -173,21 +184,57 @@
             मगर वहाँ आने वाले<br>
             दिल लेकर ही आते हैं।
           </p>
-        </div>
+          <div class="essay-footer">
+            <span>— स्तुति</span>
+          </div>
+        </article>
 
         <!-- Shayari Card 2 -->
-        <div class="shayari-card highlight-card">
-          <div class="shayari-meta">
-            <span>002 / SHAYARI</span>
-            <span>-स्तुति</span>
+        <article class="essay-card" data-category="shayari">
+          <div class="essay-meta">
+            <span class="essay-tag">SHAYARI / DEVANAGARI</span>
+            <span class="essay-date">002</span>
           </div>
-          <p class="shayari-text">
+          <p class="essay-poetry">
             हार तो मुक़द्दर थी इश्क़ की उस रोज़,<br>
             कि तुम्हारा होना-न-होना एक-सा लगा;<br>
             फ़ख़्र भी है, शर्म भी — कि जीत गया आख़िर,<br>
             मेरे न होने से तुम्हें फ़र्क़ जो पड़ा।
           </p>
-        </div>
+          <div class="essay-footer">
+            <span>— स्तुति</span>
+          </div>
+        </article>
+
+        <!-- Opinion Column Card -->
+        <article class="essay-card" data-category="opinions">
+          <div class="essay-meta">
+            <span class="essay-tag">OPINION / PERSPECTIVES</span>
+            <span class="essay-date">COLUMN</span>
+          </div>
+          <h4>The Illusion of Curated Perfection in Digital Spaces</h4>
+          <p class="essay-excerpt">
+            We spend years trying to align our portfolios, social feeds, and digital identities into clean, flawless boxes. But true creative resonance happens in the messy, unpolished intersections.
+          </p>
+          <div class="essay-footer">
+            <a href="#" class="essay-link">read piece ↗</a>
+          </div>
+        </article>
+
+        <!-- Faith & Philosophy Card -->
+        <article class="essay-card" data-category="faith">
+          <div class="essay-meta">
+            <span class="essay-tag">FAITH & PHILOSOPHY</span>
+            <span class="essay-date">REFLECTIONS</span>
+          </div>
+          <h4>On Devotion, Solitude & Finding Sacred Quiet</h4>
+          <p class="essay-excerpt">
+            Faith isn't always found in loud declarations; often, it lives in quiet discipline, sacred rituals, and learning to sit comfortably in empty spaces when everything else moves fast.
+          </p>
+          <div class="essay-footer">
+            <a href="#" class="essay-link">read reflection ↗</a>
+          </div>
+        </article>
       </div>
     </section>
 
