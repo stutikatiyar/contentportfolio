@@ -45,3 +45,24 @@ galleryItems.forEach((item) => {
     item.classList.toggle("active");
   });
 });
+
+// Category Filter Tabs for Essays & Shayari
+const essayTabs = document.querySelectorAll(".essay-tab");
+const essayCards = document.querySelectorAll(".essay-card");
+
+essayTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    essayTabs.forEach((t) => t.classList.remove("active"));
+    tab.classList.add("active");
+
+    const category = tab.getAttribute("data-category");
+
+    essayCards.forEach((card) => {
+      if (category === "all" || card.getAttribute("data-category") === category) {
+        card.style.display = "flex";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+});
