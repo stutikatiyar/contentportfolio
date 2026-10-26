@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Code & Systems — Stuti</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  
+  <header class="site-header">
+    <a class="wordmark" href="index.html">s<span>.</span></a>
+    <nav>
+      <a href="world.html">LITTLE WORLD</a>
+      <a href="manifesto.html">MANIFESTO</a>
+      <a href="creates.html">IN PROGRESS</a>
+      <a href="tech.html" class="active">CODE &amp; SYSTEMS</a>
+      <a href="reflections.html">POETRY &amp; REFLECTIONS</a>
+      <a class="nav-contact" href="index.html#contact">SAY HELLO ↗</a>
+    </nav>
+  </header>
+
+  <main class="section tech-section">
+    <div class="tech-grid-heading">
+      <p class="eyebrow">THE OTHER SIDE ✳ CODE &amp; SYSTEMS</p>
+      <h2>Featured Engineering Projects</h2>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card" data-project="dermalens">
+        <div class="project-header">
+          <span class="project-tag">AI / COMPUTER VISION</span>
+          <div class="project-links">
+            <a href="https://github.com/stutikatiyar" target="_blank" rel="noreferrer">github ↗</a>
+          </div>
+        </div>
+        <h4>DermaLens</h4>
+        <p>AI image enhancement and confidence validation middleware designed for medical image quality restoration and validation.</p>
+        <div class="tech-stack">
+          <span>PyTorch</span>
+          <span>OpenCV</span>
+          <span>FastAPI</span>
+          <span>React.js</span>
+        </div>
+        <div class="card-inspect-hint">click card to inspect specs ⚡</div>
+      </div>
+
+      <div class="project-card" data-project="subtitler">
+        <div class="project-header">
+          <span class="project-tag">SPEECH AI / FULL-STACK</span>
+          <div class="project-links">
+            <a href="https://github.com/stutikatiyar" target="_blank" rel="noreferrer">github ↗</a>
+          </div>
+        </div>
+        <h4>Multilingual Subtitler</h4>
+        <p>AI-powered captioning platform built for multilingual speech processing and Hinglish code-switching normalization.</p>
+        <div class="tech-stack">
+          <span>Next.js</span>
+          <span>TypeScript</span>
+          <span>Faster-Whisper</span>
+          <span>FFmpeg</span>
+        </div>
+        <div class="card-inspect-hint">click card to inspect specs ⚡</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <a class="wordmark" href="index.html">s<span>.</span></a>
+    <p>made by Stuti, while becoming Stuti.</p>
+    <span>© <span id="year"></span></span>
+  </footer>
+
+  <!-- Project Inspection Modal -->
+  <div id="project-modal" class="project-modal" aria-hidden="true" role="dialog">
+    <div class="project-modal-backdrop" id="project-modal-backdrop"></div>
+    <div class="project-modal-content">
+      <button class="project-modal-close" id="project-modal-close" aria-label="Close project modal">&times;</button>
+      <div class="project-modal-header">
+        <span class="project-tag" id="pm-tag"></span>
+        <h3 id="pm-title"></h3>
+        <p id="pm-desc"></p>
+      </div>
+      
+      <div class="project-modal-tabs">
+        <button class="pm-tab active" data-tab="architecture">Architecture &amp; Specs</button>
+        <button class="pm-tab" data-tab="tech">Tech Stack</button>
+        <button class="pm-tab" data-tab="code">Pipeline Snippet</button>
+      </div>
+
+      <div class="project-modal-body">
+        <div class="pm-tab-content active" id="pm-tab-architecture">
+          <ul class="pm-feature-list" id="pm-features"></ul>
+        </div>
+        <div class="pm-tab-content" id="pm-tab-tech">
+          <div class="pm-tech-grid" id="pm-tech-list"></div>
+        </div>
+        <div class="pm-tab-content" id="pm-tab-code">
+          <pre><code id="pm-code-snippet"></code></pre>
+        </div>
+      </div>
+
+      <div class="project-modal-footer">
+        <a id="pm-github-link" href="https://github.com/stutikatiyar" target="_blank" rel="noreferrer" class="button button-light">View Repository on GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
