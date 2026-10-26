@@ -32,7 +32,7 @@ if (slides.length > 1) {
     slides[currentSlide].classList.remove("active");
     currentSlide = (currentSlide + 1) % slides.length;
     slides[currentSlide].classList.add("active");
-  }, 3500);
+  }, 4000);
 }
 
 // Category Filter Tabs for Essays & Shayari
@@ -69,7 +69,7 @@ const revealObserver = new IntersectionObserver(
   { threshold: 0.12 }
 );
 
-document.querySelectorAll(".section, .world-card, .project-card, .essay-card, .gallery-item, .manifesto").forEach((el) => {
+document.querySelectorAll(".section, .world-card, .project-card, .essay-card, .gallery-item, .manifesto, .create-item").forEach((el) => {
   el.classList.add("reveal");
   revealObserver.observe(el);
 });
@@ -100,7 +100,16 @@ if (lightboxClose) {
   });
 }
 
-// Project Inspection Modals
+if (lightbox) {
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+    }
+  });
+}
+
+// Project Inspection Modals with Interactive Pipeline Simulator
 const projectData = {
   dermalens: {
     title: "DermaLens",
@@ -113,7 +122,8 @@ const projectData = {
       "Responsive React dashboard with side-by-side diagnostic image comparisons."
     ],
     tech: ["PyTorch", "OpenCV", "FastAPI", "React.js", "Python", "Tailwind CSS"],
-    code: `@app.post("/api/v1/assess-quality")\nasync function assess_image(file: UploadFile = File(...)):\n    image_bytes = await file.read()\n    img = cv2.imdecode(np.frombuffer(image_bytes, np.uint8), cv2.IMREAD_COLOR)\n    blur_score = cv2.Laplacian(img, cv2.CV_64F).var()\n    \n    if blur_score < 100.0:\n        img = enhance_contrast_and_sharpness(img)\n    \n    confidence = model.predict_quality(img)\n    return {"quality_score": confidence, "enhanced": True}`
+    code: `@app.post("/api/v1/assess-quality")\nasync function assess_image(file: UploadFile = File(...)):\n    image_bytes = await file.read()\n    img = cv2.imdecode(np.frombuffer(image_bytes, np.uint8), cv2.IMREAD_COLOR)\n    blur_score = cv2.Laplacian(img, cv2.CV_64F).var()\n    \n    if blur_score < 100.0:\n        img = enhance_contrast_and_sharpness(img)\n    \n    confidence = model.predict_quality(img)\n    return {"quality_score": confidence, "enhanced": True}`,
+    simulationLog: ">>> Initializing PyTorch ResNet18 weights...\n>>> Loading OpenCV enhancement filters...\n>>> Status: Ready for test inference [Latency: 112ms]"
   },
   subtitler: {
     title: "Multilingual Subtitler",
@@ -126,7 +136,8 @@ const projectData = {
       "Next.js / TypeScript studio interface for real-time subtitle timing edits."
     ],
     tech: ["Next.js", "TypeScript", "Faster-Whisper", "FFmpeg", "Python", "FastAPI"],
-    code: `const transcribeAudio = async (filePath: string) => {\n  const audioBuffer = await extractAudioChannel(filePath);\n  const segments = await whisperModel.transcribe(audioBuffer, {\n    language: "auto",\n    task: "transcribe",\n    word_timestamps: true\n  });\n  return normalizeHinglishCodeSwitching(segments);\n};`
+    code: `const transcribeAudio = async (filePath: string) => {\n  const audioBuffer = await extractAudioChannel(filePath);\n  const segments = await whisperModel.transcribe(audioBuffer, {\n    language: "auto",\n    task: "transcribe",\n    word_timestamps: true\n  });\n  return normalizeHinglishCodeSwitching(segments);\n};`,
+    simulationLog: ">>> Spawning FFmpeg worker process...\n>>> Loading Faster-Whisper transformer model...\n>>> Status: Audio stream parsed successfully [Code-switch accuracy: 96.4%]"
   }
 };
 
@@ -139,6 +150,7 @@ const pmTechList = document.getElementById("pm-tech-list");
 const pmCode = document.getElementById("pm-code-snippet");
 const pmClose = document.getElementById("project-modal-close");
 const pmBackdrop = document.getElementById("project-modal-backdrop");
+const pmTabCode = document.getElementById("pm-tab-code");
 
 document.querySelectorAll(".project-card").forEach((card) => {
   card.addEventListener("click", (e) => {
@@ -153,6 +165,37 @@ document.querySelectorAll(".project-card").forEach((card) => {
       pmFeatures.innerHTML = data.features.map((f) => `<li>${f}</li>`).join("");
       pmTechList.innerHTML = data.tech.map((t) => `<span>${t}</span>`).join("");
       pmCode.textContent = data.code;
+      
+      // Inject Interactive Pipeline Simulator console
+      let runner = pmTabCode.querySelector(".pipeline-runner");
+      if (!runner) {
+        runner = document.createElement("div");
+        runner.className = "pipeline-runner";
+        runner.innerHTML = `
+          <div class="runner-header"><span>Live Simulation Console</span><button class="run-btn" id="run-pipeline-btn">▶ Execute</button></div>
+          <div class="runner-console" id="runner-output">Click 'Execute' to run mock pipeline...</div>
+        `;
+        pmTabCode.appendChild(runner);
+      }
+
+      const runBtn = document.getElementById("run-pipeline-btn");
+      const runnerOutput = document.getElementById("runner-output");
+      if (runBtn && runnerOutput) {
+        runBtn.onclick = () => {
+          runnerOutput.textContent = ">>> Running pipeline...\n";
+          let step = 0;
+          const logs = data.simulationLog.split("\n");
+          const interval = setInterval(() => {
+            if (step < logs.length) {
+              runnerOutput.textContent += logs[step] + "\n";
+              step++;
+            } else {
+              clearInterval(interval);
+            }
+          }, 350);
+        };
+      }
+
       projectModal.classList.add("open");
       projectModal.setAttribute("aria-hidden", "false");
     }
@@ -190,7 +233,7 @@ document.querySelectorAll('.essay-card[data-category="shayari"] .essay-footer').
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
     isPlaying = !isPlaying;
-    btn.innerHTML = isPlaying ? `<span>⏸</span> Playing` : `<span>▶</span> Listen`;
+    btn.innerHTML = isPlaying ? `<span>⏸</span> Playing audio...` : `<span>▶</span> Listen`;
     btn.style.color = isPlaying ? "#f0f3fa" : "var(--pop)";
   });
 });
